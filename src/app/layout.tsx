@@ -1,6 +1,9 @@
+"use client";
+
+import Header from "@/components/header";
 import StyledComponentsRegistry from "@/lib/registry";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools/build/lib/devtools";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,7 +25,10 @@ export default function RootLayout({
       <QueryClientProvider client={client}>
         <ReactQueryDevtools />
         <StyledComponentsRegistry>
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className}>
+            <Header />
+            {children}
+          </body>
         </StyledComponentsRegistry>
       </QueryClientProvider>
     </html>

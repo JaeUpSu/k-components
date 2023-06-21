@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import Link from "next/link";
+
+import { usePathname, useRouter } from "next/navigation";
 import { motion, useAnimation, useViewportScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,7 +28,7 @@ const Logo = styled(motion.svg)`
   margin-right: 50px;
   width: 95px;
   height: 25px;
-  fill: ${(props) => props.theme.red};
+  fill: red;
   path {
     stroke-width: 6px;
     stroke: white;
@@ -37,14 +40,14 @@ const Items = styled.ul`
 `;
 const Item = styled.li`
   margin-right: 20px;
-  color: ${(props) => props.theme.white.darker};
+  color: darkgray;
   transition: color 0.3s ease-in-out;
   position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
   &:hover {
-    color: ${(props) => props.theme.white.lighter};
+    color: rgb(200, 200, 200);
   }
 `;
 const Search = styled.form`
@@ -69,7 +72,7 @@ const Input = styled(motion.input)`
   color: white;
   font-size: 16px;
   background-color: transparent;
-  border: 1px solid ${(props) => props.theme.white.lighter};
+  border: 1px solid lightgray;
 `;
 const Circle = styled(motion.span)`
   position: absolute;
@@ -80,7 +83,7 @@ const Circle = styled(motion.span)`
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: ${(props) => props.theme.white.darker};
+  background-color: darkgray;
 `;
 interface IForm {
   keyword: string;
@@ -108,8 +111,9 @@ const logoVariants = {
 
 function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const homeMatch = useMatch("/");
-  const tvMatch = useMatch("/tv");
+  const router = useRouter();
+  const pathname = usePathname();
+
   const inputAnimation = useAnimation();
   const navAnimation = useAnimation();
   const { scrollY } = useViewportScroll();
@@ -135,10 +139,9 @@ function Header() {
     });
   }, [scrollY, navAnimation]);
 
-  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<IForm>();
   const onValid = (data: IForm) => {
-    navigate(`/search?keyword=${data.keyword}`);
+    router.push(`/search?keyword=${data.keyword}`);
   };
 
   return (
@@ -158,11 +161,13 @@ function Header() {
         </Logo>
         <Items>
           <Item>
-            <Link to="/">Home {homeMatch && <Circle layoutId="circle" />}</Link>
+            <Link href="/">
+              Home {pathname === "" && <Circle layoutId="circle" />}
+            </Link>
           </Item>
           <Item>
-            <Link to="/tv">
-              Tv Shows {tvMatch && <Circle layoutId="circle" />}
+            <Link href="/tv">
+              Tv Shows {pathname === "tv" && <Circle layoutId="circle" />}
             </Link>
           </Item>
         </Items>
