@@ -15,6 +15,7 @@
 - @ 좋아요 기능
 - @ 카운트 기능
 - @ 해시태그 기능
+- @ 페이지 높이에 따른 헤더에 Progresive Bar
 
 <br>
 
@@ -140,6 +141,7 @@
 `Cypress` <br>
 `d3` <br>
 `Webgl` <br>
+`styled-components` <br>
 `Chakra UI` <br>
 `Bulma` <br>
 
