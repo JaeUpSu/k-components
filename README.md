@@ -114,7 +114,11 @@
 
 3️⃣ AWS EC2
 
-4️⃣ Render Hosting
+4️⃣ JWT
+
+5️⃣ Render Hosting
+
+6️⃣ Github Actions
 ```
 
 <br>
