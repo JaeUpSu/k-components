@@ -28,6 +28,7 @@
   - @ d3 & webgl 을 이용한 커스텀 컴포넌트
   - @ transition & framer-motion 을 이용한 커스텀 애니메이션
   - @ Render 호스팅
+  - @ PostgreSQL 사용
 
 <br>
 <hr>
@@ -95,6 +96,7 @@
 
 `DJango` <br>
 `DRF` <br>
+`PostgreSQL` <br>
 `AWS`
 
 --
