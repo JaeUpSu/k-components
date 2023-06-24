@@ -1,10 +1,14 @@
 "use client";
-
-import Header from "@/components/header";
+import "./GlobalStyle.scss";
+import styled from "styled-components";
+import Header from "@/components/Header/header";
 import StyledComponentsRegistry from "@/lib/registry";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+import { theme } from "./theme";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "styled-components";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,18 +23,36 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log(process.env.NEXT_PUBLIC_HELLO);
   const client = new QueryClient();
   return (
     <html lang="en">
-      <QueryClientProvider client={client}>
-        <ReactQueryDevtools />
-        <StyledComponentsRegistry>
-          <body className={inter.className}>
-            <Header />
-            {children}
-          </body>
-        </StyledComponentsRegistry>
-      </QueryClientProvider>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Leckerli+One"
+          rel="stylesheet"
+        ></link>
+      </head>
+      <body className={`${inter.className} body`}>
+        <QueryClientProvider client={client}>
+          {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
+          <StyledComponentsRegistry>
+            <ThemeProvider theme={theme}>
+              <Applayout>
+                <Header />
+                {children}
+              </Applayout>
+            </ThemeProvider>
+          </StyledComponentsRegistry>
+        </QueryClientProvider>
+      </body>
     </html>
   );
 }
+
+const Applayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+`;
