@@ -39,8 +39,10 @@ export default function RootLayout({
           <StyledComponentsRegistry>
             <ThemeProvider theme={theme}>
               <Applayout>
-                <Header />
-                {children}
+                <header>
+                  <Header />
+                </header>
+                <main>{children}</main>
               </Applayout>
             </ThemeProvider>
           </StyledComponentsRegistry>
