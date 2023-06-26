@@ -9,13 +9,14 @@ interface INavLink {
   active?: boolean;
 }
 const A = styled.a`
-  color: ${(props) => props.theme.white.darker};
+  color: black;
   transition: color 0.3s ease-in-out;
   text-decoration: none;
   font-size: 13pt;
   font-weight: 600;
+  font-family: var(--font-frank-ruhl-libre);
   &:hover {
-    color: ${(props) => props.theme.white.lighter};
+    color: silver;
   }
 `;
 

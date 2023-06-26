@@ -8,19 +8,23 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import NavLink from "./components/NavLink";
+import { life_savers } from "@/app/layout";
 
 const Nav = styled(motion.nav)`
+  position: fixed;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   width: 100%;
+  height: 60px;
   top: 0;
   font-size: 14px;
   padding: 20px 20px;
   padding-left: 30px;
   color: white;
   background-color: black;
+  box-shadow: 0 0 2px 1px;
 `;
 
 const Col = styled.div`
@@ -33,7 +37,8 @@ const Logo = styled(motion.svg)`
   width: 175px;
   height: 25px;
   cursor: pointer;
-  fill: ${(props) => props.theme.red};
+  fill: ${(props) => props.theme.major.blue};
+  font-family: var(--font--frank-ruhl-libre);
   path {
     stroke-width: 6px;
     stroke: white;
@@ -58,7 +63,7 @@ const navVariants = {
     backgroundColor: "rgba(0, 0, 0, 0)",
   },
   scroll: {
-    backgroundColor: "rgb(0, 0, 0)",
+    backgroundColor: "rgb(0, 0, 0, 0.4)",
   },
 };
 
@@ -107,6 +112,7 @@ function Header() {
         >
           <motion.text
             y="260"
+            fontFamily={life_savers.style.fontFamily}
             fontWeight="bold"
             fontSize="210pt"
             onClick={onHome}

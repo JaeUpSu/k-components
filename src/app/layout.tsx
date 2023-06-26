@@ -1,5 +1,5 @@
 "use client";
-import "./GlobalStyle.scss";
+import "./styles/GlobalStyle.scss";
 import styled from "styled-components";
 import Header from "@/components/Header/header";
 import StyledComponentsRegistry from "@/lib/registry";
@@ -9,8 +9,19 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "styled-components";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Life_Savers } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+export const life_savers = Life_Savers({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "K-Components",
@@ -42,7 +53,7 @@ export default function RootLayout({
                 <header>
                   <Header />
                 </header>
-                <main>{children}</main>
+                <Main>{children}</Main>
               </Applayout>
             </ThemeProvider>
           </StyledComponentsRegistry>
@@ -56,5 +67,13 @@ const Applayout = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100vw;
+  overflow-x: scroll;
   flex: 1;
+`;
+
+const Main = styled.main`
+  background-color: ${(props) => props.theme.major.gray.ligt};
+  padding-top: 100px;
+  margin: auto;
 `;
