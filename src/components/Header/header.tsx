@@ -20,8 +20,7 @@ const Nav = styled(motion.nav)`
   height: 60px;
   top: 0;
   font-size: 14px;
-  padding: 20px 20px;
-  padding-left: 30px;
+  padding: 20px 30px;
   color: white;
   background-color: black;
   box-shadow: 0 0 2px 1px;
@@ -29,7 +28,10 @@ const Nav = styled(motion.nav)`
 
 const Col = styled.div`
   display: flex;
+  width: 100%;
+  padding-right: 30px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Logo = styled(motion.svg)`
@@ -37,7 +39,7 @@ const Logo = styled(motion.svg)`
   width: 175px;
   height: 25px;
   cursor: pointer;
-  fill: ${(props) => props.theme.major.blue};
+  fill: ${(props) => props.theme.major.blue.basic};
   font-family: var(--font--frank-ruhl-libre);
   path {
     stroke-width: 6px;
@@ -63,7 +65,7 @@ const navVariants = {
     backgroundColor: "rgba(0, 0, 0, 0)",
   },
   scroll: {
-    backgroundColor: "rgb(0, 0, 0, 0.4)",
+    backgroundColor: "rgb(0, 0, 0, 0.5)",
   },
 };
 
@@ -106,14 +108,14 @@ function Header() {
           initial="normal"
           animate="normal"
           xmlns="http://www.w3.org/2000/svg"
-          width="1420"
+          width="1040"
           height="360"
-          viewBox="0 0 2220 324"
+          viewBox="0 0 2120 324"
         >
           <motion.text
             y="260"
             fontFamily={life_savers.style.fontFamily}
-            fontWeight="bold"
+            fontWeight="900"
             fontSize="210pt"
             onClick={onHome}
           >

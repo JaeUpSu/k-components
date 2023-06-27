@@ -5,13 +5,19 @@ import Header from "@/components/Header/header";
 import StyledComponentsRegistry from "@/lib/registry";
 
 import { theme } from "./theme";
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "styled-components";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Inter, Life_Savers, Capriola } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Life_Savers } from "next/font/google";
 
 export const life_savers = Life_Savers({
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  style: ["normal"],
+  display: "swap",
+});
+
+export const capriola = Capriola({
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal"],
@@ -68,12 +74,12 @@ const Applayout = styled.div`
   flex-direction: column;
   min-height: 100vh;
   width: 100vw;
-  overflow-x: scroll;
+  overflow-x: hidden;
   flex: 1;
 `;
 
 const Main = styled.main`
-  background-color: ${(props) => props.theme.major.gray.ligt};
+  background-color: ${(props) => props.theme.major.gray.light};
   padding-top: 100px;
   margin: auto;
 `;

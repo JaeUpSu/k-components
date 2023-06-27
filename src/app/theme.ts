@@ -14,15 +14,18 @@ export const theme: DefaultTheme = {
     darker: "#e5e5e5",
   },
   major: {
-    blue: "#0100fd",
+    blue: {
+      dark: "#0100fd",
+      basic: "#4444ff",
+    },
     purple: {
       dark: "411c87",
       basic: "7d02e2",
     },
     gray: {
-      dark: "#59585c",
+      dark: "#27262c",
       basic: "#c7c6c6",
-      light: "#FDFAF1",
+      light: "#FDFCF1",
     },
     green: {
       dark: "#CFCC80",
