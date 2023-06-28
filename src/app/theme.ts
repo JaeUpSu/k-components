@@ -16,7 +16,7 @@ export const theme: DefaultTheme = {
   major: {
     blue: {
       dark: "#0100fd",
-      basic: "#4444ff",
+      basic: "#2244ff",
     },
     purple: {
       dark: "411c87",
@@ -25,7 +25,7 @@ export const theme: DefaultTheme = {
     gray: {
       dark: "#27262c",
       basic: "#c7c6c6",
-      light: "#FDFCF1",
+      light: "#E5E5E1",
     },
     green: {
       dark: "#CFCC80",
