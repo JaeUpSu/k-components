@@ -17,23 +17,23 @@
   white-space: nowrap;
 }
 
-.tooltip .tooltip-tail {
-  visibility: hidden;
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  background-color: #f0f0f0;
-  transform: rotate(45deg);
-  z-index: 0;
-}
+// .tooltip .tooltip-tail {
+//   visibility: hidden;
+//   position: absolute;
+//   top: -10px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   width: 20px;
+//   height: 20px;
+//   background-color: #f0f0f0;
+//   transform: rotate(45deg);
+//   z-index: 0;
+// }
 
 .box:hover .tooltip {
   visibility: visible;
 }
 
-.box:hover .tooltip-tail {
-  visibility: visible;
-}
+// .box:hover .tooltip-tail {
+//   visibility: visible;
+// }

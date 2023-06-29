@@ -14,7 +14,7 @@ import { Tooltip } from "@/components/Tooltip/Tooltip";
 
 const Container = styled.div`
   display: flex;
-  gap: 40px;
+  gap: 100px;
   flex-direction: column;
   align-items: center;
 
@@ -76,12 +76,14 @@ const Flex = styled.div`
 `;
 
 const SearchBox = styled.div`
-  width: 70vw;
+  width: 100%;
   height: 4vh;
+  max-width: 40vw;
   padding: 5px 20px;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   border-radius: 50px;
   border: 1px solid darkgray;
@@ -93,11 +95,11 @@ const SearchBox = styled.div`
 `;
 
 const Search = styled.input`
-  width: 75%;
+  width: 100%;
   height: 90%;
-  background-color: transparent;
-  border-color: transparent;
   padding: 0px 7px;
+  border-color: transparent;
+  background-color: transparent;
 
   font-size: 14pt;
   outline: none;
@@ -130,7 +132,10 @@ const Animations = styled.div`
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
-  const projects = ["b3", "cg", "myinfo", "runner8"];
+  const projects = {
+    id: ["b3", "cg", "myinfo", "runner8"],
+    name: ["방삼", "코딩가든", "마이인포", "러너8"],
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -141,7 +146,7 @@ export default function Home() {
   };
 
   const onSearch = () => {
-    console.log("search ...", searchValue);
+    console.log(searchValue);
   };
 
   const onLink = (e: React.MouseEvent<HTMLImageElement>): void => {
@@ -167,11 +172,10 @@ export default function Home() {
           <br />& Web Developer
         </text>
         <Projects>
-          {projects.map((p: string, idx: number) => (
+          {projects["id"].map((p: string, idx: number) => (
             <div style={{ cursor: "pointer" }}>
               <Image
                 id={p}
-                key={p + idx}
                 onClick={onLink}
                 src={`/images/${p}Logo.png`}
                 alt={`${p} 프로젝트 링크`}
@@ -184,19 +188,22 @@ export default function Home() {
       </Introduce>
       <Description>
         <SearchBox>
-          <IoIosSearch
-            style={{
-              fontSize: "18px",
-              marginRight: "10px",
-            }}
-          />
-          <Search
-            type="text"
-            value={searchValue}
-            onChange={handleInputChange}
-            placeholder="검색"
-            autoFocus
-          />
+          <Flex>
+            <IoIosSearch
+              style={{
+                width: "25px",
+                fontSize: "18px",
+                marginRight: "10px",
+              }}
+            />
+            <Search
+              type="text"
+              value={searchValue}
+              onChange={handleInputChange}
+              placeholder="검색"
+              autoFocus
+            />
+          </Flex>
           <Flex>
             {searchValue !== "" ? (
               <>
@@ -226,6 +233,7 @@ export default function Home() {
             </Tooltip>
             <Tooltip contents="검색">
               <IoIosSearch
+                onClick={onSearch}
                 cursor={"pointer"}
                 style={{
                   fontSize: "25px",
