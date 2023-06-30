@@ -79,11 +79,11 @@ const SearchBox = styled.div`
   width: 100%;
   height: 4vh;
   max-width: 40vw;
+  min-width: 350px;
   padding: 5px 20px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   border-radius: 50px;
   border: 1px solid darkgray;
@@ -101,6 +101,7 @@ const Search = styled.input`
   border-color: transparent;
   background-color: transparent;
 
+  flex-grow: 3;
   font-size: 14pt;
   outline: none;
   overflow: auto;
@@ -188,7 +189,7 @@ export default function Home() {
       </Introduce>
       <Description>
         <SearchBox>
-          <Flex>
+          <Flex style={{ flexGrow: 1, minWidth: "250px" }}>
             <IoIosSearch
               style={{
                 width: "25px",
