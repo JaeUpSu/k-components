@@ -13,6 +13,10 @@ import { Divider } from "@/components/Divider";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { MarqueeSlider } from "@/components/Slide/MarqueeSlide";
 
+interface SearchBoxProps {
+  isFocus: boolean;
+}
+
 const Container = styled.div`
   display: flex;
   gap: 100px;
@@ -20,7 +24,7 @@ const Container = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 200vh;
+  height: 185vh;
   padding: 30px 50px;
 `;
 
@@ -76,11 +80,11 @@ const Flex = styled.div`
   gap: 10px;
 `;
 
-const SearchBox = styled.div`
+const SearchBox = styled.div<SearchBoxProps>`
   width: 100%;
   height: 4vh;
   max-width: 40vw;
-  min-width: 350px;
+  min-width: 500px;
   padding: 5px 20px;
 
   display: flex;
@@ -88,22 +92,26 @@ const SearchBox = styled.div`
 
   border-radius: 50px;
   border: 1px solid darkgray;
-
   background-color: white;
+
   &:hover {
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   }
+
+  box-shadow: ${(props) =>
+    props.isFocus ? "0 1px 6px rgba(32, 33, 36, 0.28)" : "none"};
 `;
 
 const Search = styled.input`
   width: 100%;
   height: 90%;
+  min-width: 250px;
   padding: 0px 7px;
   border-color: transparent;
   background-color: transparent;
 
   flex-grow: 3;
-  font-size: 14pt;
+  font-size: 12pt;
   outline: none;
   overflow: auto;
 `;
@@ -121,13 +129,23 @@ const Label = styled.span`
   width: 100%;
   font-size: 30px;
   text-align: center;
+  font-weight: 700;
 `;
 
 export default function Home() {
+  const [isFocus, setIsFocus] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const projects = {
     id: ["b3", "cg", "myinfo", "runner8"],
     name: ["방삼", "코딩가든", "마이인포", "러너8"],
+  };
+
+  const handleInputFocus = () => {
+    setIsFocus(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsFocus(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -180,18 +198,19 @@ export default function Home() {
         </Projects>
       </Introduce>
       <Description>
-        <SearchBox>
+        <SearchBox isFocus={isFocus}>
           <Flex style={{ flexGrow: 1, minWidth: "250px" }}>
             <IoIosSearch
               style={{
-                width: "25px",
+                width: "20px",
                 fontSize: "18px",
-                marginRight: "10px",
               }}
             />
             <Search
               type="text"
               value={searchValue}
+              onBlur={handleInputBlur}
+              onFocus={handleInputFocus}
               onChange={handleInputChange}
               placeholder="검색"
               autoFocus
@@ -246,9 +265,9 @@ export default function Home() {
         </BoxMt50>
       </Description>
       <Sliders>
-        <Label>컴포넌트</Label>
+        <Label className={life_savers.className}>Components</Label>
         <MarqueeSlider />
-        <Label>애니메이션</Label>
+        <Label className={life_savers.className}>Animations</Label>
         <MarqueeSlider isReverse={true} />
       </Sliders>
     </Container>
