@@ -11,6 +11,7 @@ import { FaRegKeyboard } from "react-icons/fa";
 import { life_savers } from "@/app/layout";
 import { Divider } from "@/components/Divider";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
+import { MarqueeSlider } from "@/components/Slide/MarqueeSlide";
 
 const Container = styled.div`
   display: flex;
@@ -108,27 +109,18 @@ const Search = styled.input`
 `;
 
 const Sliders = styled.div`
+  margin-top: 60px;
+
   flex: 3;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-top: 60px;
 `;
 
-const Components = styled.div`
-  width: 70vw;
-  height: 20vh;
-  padding-top: 2vh;
-
-  background-color: green;
-`;
-
-const Animations = styled.div`
-  width: 70vw;
-  height: 20vh;
-  padding-top: 2vh;
-
-  background-color: navy;
+const Label = styled.span`
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
 `;
 
 export default function Home() {
@@ -254,8 +246,10 @@ export default function Home() {
         </BoxMt50>
       </Description>
       <Sliders>
-        <Components>컴포넌트</Components>
-        <Animations>애니메이션</Animations>
+        <Label>컴포넌트</Label>
+        <MarqueeSlider />
+        <Label>애니메이션</Label>
+        <MarqueeSlider isReverse={true} />
       </Sliders>
     </Container>
   );
