@@ -84,7 +84,7 @@ const SearchBox = styled.div<SearchBoxProps>`
   width: 100%;
   height: 4vh;
   max-width: 40vw;
-  min-width: 500px;
+  min-width: 550px;
   padding: 5px 20px;
 
   display: flex;
@@ -199,7 +199,7 @@ export default function Home() {
       </Introduce>
       <Description>
         <SearchBox isFocus={isFocus}>
-          <Flex style={{ flexGrow: 1, minWidth: "250px" }}>
+          <Flex style={{ flexGrow: 1 }}>
             <IoIosSearch
               style={{
                 width: "20px",
