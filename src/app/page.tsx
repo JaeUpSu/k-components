@@ -12,6 +12,7 @@ import { life_savers } from "@/app/layout";
 import { Divider } from "@/components/Divider";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { MarqueeSlider } from "@/components/Slide/MarqueeSlide";
+import TodoList from "@/practice/redux";
 
 interface SearchBoxProps {
   isFocus: boolean;
@@ -197,6 +198,7 @@ export default function Home() {
           ))}
         </Projects>
       </Introduce>
+      <TodoList />
       <Description>
         <SearchBox isFocus={isFocus}>
           <Flex style={{ flexGrow: 1 }}>

@@ -9,6 +9,8 @@ import { ThemeProvider } from "styled-components";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Inter, Life_Savers, Capriola } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import configureStore from "@/lib/configureStore";
+import { Provider } from "react-redux";
 
 export const life_savers = Life_Savers({
   subsets: ["latin"],
@@ -42,6 +44,7 @@ export default function RootLayout({
 }) {
   console.log(process.env.NEXT_PUBLIC_HELLO);
   const client = new QueryClient();
+
   return (
     <html lang="en">
       <head>
@@ -53,16 +56,18 @@ export default function RootLayout({
       <body className={`${inter.className} body`}>
         <QueryClientProvider client={client}>
           {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
-          <StyledComponentsRegistry>
-            <ThemeProvider theme={theme}>
-              <Applayout>
-                <header>
-                  <Header />
-                </header>
-                <Main>{children}</Main>
-              </Applayout>
-            </ThemeProvider>
-          </StyledComponentsRegistry>
+          <Provider store={configureStore}>
+            <StyledComponentsRegistry>
+              <ThemeProvider theme={theme}>
+                <Applayout>
+                  <header>
+                    <Header />
+                  </header>
+                  <Main>{children}</Main>
+                </Applayout>
+              </ThemeProvider>
+            </StyledComponentsRegistry>
+          </Provider>
         </QueryClientProvider>
       </body>
     </html>
