@@ -1,6 +1,5 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodoProps } from "@/lib/configureStore";
 import { useDispatch } from "react-redux";
 
 interface Todo {
@@ -31,7 +30,7 @@ export const todosReducer = todosSlice.reducer;
 export const { addTodo, deleteTodo } = todosSlice.actions;
 
 export const TodoForm = (): React.ReactElement => {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (data: FieldValues) => {
