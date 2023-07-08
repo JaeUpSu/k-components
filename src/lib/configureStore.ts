@@ -1,8 +1,13 @@
+import { todosReducer } from "@/practice/TodoForm";
 import { configureStore } from "@reduxjs/toolkit";
-import { todosReducer } from "@/practice/redux";
 
 export default configureStore({
   reducer: {
     todos: todosReducer,
   },
 });
+
+export interface TodoProps {
+  text: string;
+  id: any;
+}

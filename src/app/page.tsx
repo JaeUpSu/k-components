@@ -12,7 +12,7 @@ import { life_savers } from "@/app/layout";
 import { Divider } from "@/components/Divider";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { MarqueeSlider } from "@/components/Slide/MarqueeSlide";
-import TodoList from "@/practice/redux";
+import TodoList from "@/practice/TodoList";
 
 interface SearchBoxProps {
   isFocus: boolean;
